@@ -1,5 +1,15 @@
 Rails.application.routes.draw do
-  root to: 'messages#index'
+  get 'tasks/index'
+
+  get 'tasks/show'
+
+  get 'tasks/new'
+
+  get 'tasks/edit'
+
+  get 'tasks/destroy'
+
+  root to: 'tasks#index'
     
-  resources :messages
+  resources :tasks
 end
