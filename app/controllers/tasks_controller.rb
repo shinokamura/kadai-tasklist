@@ -4,16 +4,18 @@ class TasksController < ApplicationController
   end
 
   def show
+     @task = Task.find(params[:id])
   end
 
   def new
+    @task = Task.new
   end
   
   def create
     @task = Task.new(task_params
     )
     if @task.save
-      falash[:success] = 'タスクが正常に保存されました'
+      flash[:success] = 'タスクが正常に保存されました'
       redirect_to @task
     else
       flash.now[:danger] = 'タスクが保存されませんでした'
@@ -48,6 +50,7 @@ class TasksController < ApplicationController
   private
   
   def task_params
+    params.require(:task).permit(:content)
   end
 end
 
